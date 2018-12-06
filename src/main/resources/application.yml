@@ -1,0 +1,59 @@
+spring:
+  #  数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf8&useSSL=false
+    password: root
+    username: root
+    # 数据库连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 1
+    minIdle: 1
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select "x"
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: false
+    filters: stat,wall,slf4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    platform: mysql
+
+  # jpa,用于自动创建表
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  # redis
+  redis:
+    host: localhost
+    port: 6379
+  # 缓存
+  cache:
+    multi:
+      caffeine:
+        expire-after-access: 50000
+      redis:
+        default-expiration: 600000
+
+# mybatis-plus
+mybatis-plus:
+  #  mapper文件地址
+  mapper-locations: /mapper/**Mapper.xml
+  #  实体类扫描,多个package用逗号或者分号分割
+  type-aliases-package: com.aj.mybatisplusdemo.entity
+  global-config:
+    #    主键类型,0:数据库ID自增,1:用户输入ID,2:全局唯一ID,3:全局唯一ID
+    id-type: 0
+    #    驼峰下划线转换
+    db-column-underline: true
+    #    逻辑删除
+    logic-delete-value: 1 #逻辑已删除值,默认为1
+    logic-not-delete-value: 0 #逻辑未删除值,默认为0
+  configuration:
+    #查询时，不需要自己去转义字段，如 select is_delete 会自动转成 select is_delete AS isDelete
+    map-underscore-to-camel-case: true
