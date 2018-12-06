@@ -8,6 +8,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 /**
  * @author colin
  * @date 2018-12-06
+ * redis消息监听器
  **/
 @Slf4j
 public class CacheMessageListener implements MessageListener {
