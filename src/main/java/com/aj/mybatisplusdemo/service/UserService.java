@@ -50,4 +50,6 @@ public interface UserService {
      */
     ResultVo updateUser(Long id, String name);
 
+    void sys();
+
 }

@@ -83,4 +83,10 @@ public class UserController {
         }
         return userService.updateUser(Long.valueOf(id), name);
     }
+
+    @GetMapping("/te")
+    public void sys() {
+        userService.sys();
+
+    }
 }

@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -88,6 +89,14 @@ public class UserServiceImpl implements UserService {
             return ResultVo.success("", "", null);
         }
         return ResultVo.error("更新失败");
+    }
+
+    @Override
+    @Async
+    public void sys() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println(i+"线程:"+Thread.currentThread().getName());
+        }
     }
 
 

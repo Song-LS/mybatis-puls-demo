@@ -23,6 +23,9 @@ public class User implements Serializable {
     private Long id;
     @Column(name = "name",length = 25)
     private String name;
+    private Integer age;
+    @Column(name = "phone_number", length = 15)
+    private String phoneNumber;
     @TableLogic
     @TableField(fill = FieldFill.INSERT)
     private Integer deleted;
@@ -30,4 +33,5 @@ public class User implements Serializable {
     private Date createTime;
     @TableField(fill = FieldFill.UPDATE)
     private Date updateTime;
+
 }
